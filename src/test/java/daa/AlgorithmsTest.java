@@ -24,4 +24,32 @@ public class AlgorithmsTest {
             assertArrayEquals(expected, array);
         }
     }
+
+    @Test
+    void mergeSortShouldHandleEdgeCases() {
+
+        Metrics metrics1 = new Metrics();
+        int[] empty = {};
+        MergeSort.sort(empty, metrics1);
+
+        assertArrayEquals(new int[]{}, empty);
+
+        Metrics metrics2 = new Metrics();
+        int[] oneElement = {5};
+        MergeSort.sort(oneElement, metrics2);
+
+        assertArrayEquals(new int[]{5}, oneElement);
+
+        Metrics metrics3 = new Metrics();
+        int[] duplicates = {7, 7, 7, 7, 7};
+        MergeSort.sort(duplicates, metrics3);
+
+        assertArrayEquals(new int[]{7, 7, 7, 7, 7}, duplicates);
+
+        Metrics metrics4 = new Metrics();
+        int[] sorted = {1, 2, 3, 4, 5};
+        MergeSort.sort(sorted, metrics4);
+
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, sorted);
+    }
 }

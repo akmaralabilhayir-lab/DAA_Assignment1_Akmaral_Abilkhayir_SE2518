@@ -29,4 +29,21 @@ public class Metrics {
     public void exitRecursion() {
         currentDepth--;
     }
+
+    private long startTime;
+    private long elapsedNanos;
+
+    public long getElapsedNanos() { return elapsedNanos; }
+    public double getElapsedMs()  { return elapsedNanos / 1_000_000.0; }
+
+    public void start() { startTime = System.nanoTime(); }
+    public void stop()  { elapsedNanos = System.nanoTime() - startTime; }
+
+    public void reset() {
+        comparisons = 0;
+        currentDepth = 0;
+        maxDepth = 0;
+        startTime = 0;
+        elapsedNanos = 0;
+    }
 }
